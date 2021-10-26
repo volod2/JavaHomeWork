@@ -7,23 +7,30 @@ public class Array {
         System.out.println("Введите последовательно 10 чисел для одномерного массива");
         Scanner in = new Scanner(System.in);
         int [] arr = new int[10];
+
         for (int i=0; i<10; i++){
             int x = in.nextInt();
             arr[i] = x;
         }
         int sum = 0;
+        int sumPosit = 0;
         for (int i=0; i<arr.length; i++){
             System.out.println(arr[i]);
             sum += arr[i];
+            //устранение бага
+            if (arr[i]>0){
+                sumPosit+=arr[i];
+            }
         }
-        System.out.println("Сумма элемнтов массива " + sum);
+        System.out.println("Сумма положительных элементов массива " + sumPosit);
+        System.out.println("Сумма элементов массива " + sum);
 
         bubbleSort(arr);
 
         System.out.println("Отсортированный массив: ");
         for (int i=0; i<arr.length; i++){
             System.out.println(arr[i]);
-        }
+            }
         }
 
     public static void bubbleSort(int arr[]) {
