@@ -17,14 +17,20 @@ public class CapitalLetter {
             output[i] = String.valueOf(ca);
             i++;
         }
+
+        System.out.println(ArrayStringToString(output));
+       }
+
+    public static String ArrayStringToString (String[] output)
+    {
         StringBuilder stringBuilder = new StringBuilder();
-        for (int j=0;j<output.length; j++)
+        for (int j = 0; j < output.length; j++)
         {
             stringBuilder.append(output[j]);
             stringBuilder.append(" ");
         }
-
         String finalString = stringBuilder.toString();
-        System.out.println(finalString);
-       }
+        return finalString;
+    }
+
     }
