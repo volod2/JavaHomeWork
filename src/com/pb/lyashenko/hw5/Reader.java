@@ -7,7 +7,7 @@ public class Reader {
     private int ticketNumber;
     private int takingBooks;
     private final String faculty;
-    private final Date birsday;
+    private final String birsday;
     private final String telNumber;
 
     public int getTakingBooks() {
@@ -30,7 +30,7 @@ public class Reader {
         return faculty;
     }
 
-    public Date getBirsday() {
+    public String getBirsday() {
         return birsday;
     }
 
@@ -43,7 +43,7 @@ public class Reader {
     }
 
 
-    public Reader(String fio, int ticketNumber, String faculty, Date birsday, String telNumber)
+    public Reader(String fio, int ticketNumber, String faculty, String birsday, String telNumber)
     {
         this.fio = fio;
         this.ticketNumber = ticketNumber;
@@ -54,61 +54,55 @@ public class Reader {
 
     public void takeBook(int numBooks)
     {
-        //Выводит на консоль сообщение
-        //"Петров В. В. взял 3 книги".
         int haveBooks = getTakingBooks();
         setTakingBooks(haveBooks+numBooks);
-        System.out.println("???? Кто взял " + numBooks);
+        System.out.println(fio + "взял " + numBooks + "книг");
     }
 
-    public void takeBook(Book book)
+    public void takeBook(String[] name)
     {
         int haveBooks = getTakingBooks();
-        setTakingBooks(haveBooks++);
-        System.out.println("???? Кто взял:" + book.getName() + book.getAuthor() + book.getPublishYear());
-        //"Петров В. В. взял книги: Приключения (Иванов И. И. 2000 г.), Словарь (Сидоров А. В 1980 г.), Энциклопедия (Гусев К. В. 2010 г.)".
+        setTakingBooks(haveBooks + name.length);
+        for (String s: name)
+        {
+            System.out.print(fio + "взял книги:" + name + " ,");
+        }
     }
 
     public void takeBook(Book[] book)
     {
-        //Выводит на консоль сообщение
-        //"Петров В. В. взял книги: Приключения (Иванов И. И. 2000 г.), Словарь (Сидоров А. В 1980 г.), Энциклопедия (Гусев К. В. 2010 г.)".
         int haveBooks = getTakingBooks();
-        int nowTakeBooks = book.length;
-        setTakingBooks(haveBooks+nowTakeBooks);
-        //вівести с массива 
-        //System.out.println("???? Кто взял:" + book.getName() + book.getAuthor() + book.getPublishYear());
-
+        setTakingBooks(haveBooks + book.length);
+        for (Book s: book) {
+            System.out.print(fio + "взял" + s.getName() + "(" + s.getAuthor() + s.getPublishYear() + "), ");
+        }
     }
     public void returnBook(int numBooks)
     {
-        //"Петров В. В. вернул 3 книги"
         int haveBooks = getTakingBooks();
-        setTakingBooks(haveBooks-numBooks);
-        System.out.println("???? Кто вернул " + numBooks);
+        setTakingBooks(haveBooks - numBooks);
+        System.out.println(fio + "вернул " + numBooks + "книг");
     }
 
-    //- takeBook, который будет принимать количество взятых книг.
-    public void returnBook(Book book)
+    public void returnBook(String[] name)
     {
-        //Выводит на консоль сообщение
-        //- "Петров В. В. вернул книги: Приключения, Словарь, Энциклопедия".
         int haveBooks = getTakingBooks();
-        setTakingBooks(haveBooks--);
-        System.out.println("???? Кто взял:" + book.getName() + book.getAuthor() + book.getPublishYear());
-        //"Петров В. В. взял книги: Приключения (Иванов И. И. 2000 г.), Словарь (Сидоров А. В 1980 г.), Энциклопедия (Гусев К. В. 2010 г.)".
+        setTakingBooks(haveBooks - name.length);
+        for (String s: name)
+        {
+            System.out.print(fio + "вернул книг:" + name + " ,");
+        }
     }
-    //- takeBook, который будет принимать количество взятых книг.
+
+    //отработать этот метод!!!!!!
     public void returnBook(Book[] book)
     {
-        //Выводит на консоль сообщение
-        //- "Петров В. В. вернул книги: Приключения (Иванов И. И. 2000 г.), Словарь (Сидоров А. В 1980 г.), Энциклопедия (Гусев К. В. 2010 г.)".
-        //Выводит на консоль сообщение
-        //"Петров В. В. взял книги: Приключения (Иванов И. И. 2000 г.), Словарь (Сидоров А. В 1980 г.), Энциклопедия (Гусев К. В. 2010 г.)".
         int haveBooks = getTakingBooks();
-        int nowTakeBooks = book.length;
-        setTakingBooks(haveBooks-nowTakeBooks);
-        //вівести с массива
-        //System.out.println("???? Кто взял:" + book.getName() + book.getAuthor() + book.getPublishYear());
+        setTakingBooks(haveBooks - book.length);
+
+        System.out.print(fio + "взял");
+        for (Book s: book) {
+            System.out.print(s.getName() + "(" + s.getAuthor() + s.getPublishYear() + "), ");
+        }
     }
 }

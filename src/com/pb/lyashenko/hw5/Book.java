@@ -5,7 +5,7 @@ import java.util.Date;
 public class Book {
     private final String name;
     private final String author;
-    private final Date publishYear;
+    private final String publishYear;
 
     public String getName() {
         return name;
@@ -13,11 +13,11 @@ public class Book {
     public String getAuthor() {
         return author;
     }
-    public Date getPublishYear() {
+    public String getPublishYear() {
         return publishYear;
     }
 
-    public Book(String name, String author, Date publishYear){
+    public Book(String name, String author, String publishYear){
         this.name = name;
         this.author = author;
         this.publishYear = publishYear;
