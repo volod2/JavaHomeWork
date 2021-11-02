@@ -65,7 +65,7 @@ public class Reader {
         setTakingBooks(haveBooks + name.length);
         for (String s: name)
         {
-            System.out.print(fio + "взял книги:" + name + " ,");
+            System.out.print(fio + "взял книги: " + name + " ,");
         }
     }
 
@@ -73,8 +73,10 @@ public class Reader {
     {
         int haveBooks = getTakingBooks();
         setTakingBooks(haveBooks + book.length);
+        System.out.println("");
+        System.out.print(fio + "взял ");
         for (Book s: book) {
-            System.out.print(fio + "взял" + s.getName() + "(" + s.getAuthor() + s.getPublishYear() + "), ");
+            System.out.print(s.getName() + "(" + s.getAuthor() + s.getPublishYear() + "), ");
         }
     }
     public void returnBook(int numBooks)
@@ -94,13 +96,12 @@ public class Reader {
         }
     }
 
-    //отработать этот метод!!!!!!
     public void returnBook(Book[] book)
     {
         int haveBooks = getTakingBooks();
         setTakingBooks(haveBooks - book.length);
-
-        System.out.print(fio + "взял");
+        System.out.println("");
+        System.out.print(fio + "вернул ");
         for (Book s: book) {
             System.out.print(s.getName() + "(" + s.getAuthor() + s.getPublishYear() + "), ");
         }
