@@ -8,15 +8,21 @@ public class VetСlinic {
                 new Cat("milk", "home", true),
                 new Horse("oats", "prerea", true)};
 
+
         //Veterinarian veterinarian = null;
         Class vet = null;
         try {
-            vet = Class.forName("com.pb.lyashenko.hw6.Veterinarian");
+            vet = Class.forName("hw6.Veterinarian");
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
         try {
-            Object v = vet.newInstance();
+            Constructor<Veterinarian> constructor = vet.getConstructor(new Class[]{});
+        } catch (NoSuchMethodException e) {
+            e.printStackTrace();
+        }
+        try {
+            Object o = vet.newInstance();
         } catch (InstantiationException e) {
             e.printStackTrace();
         } catch (IllegalAccessException e) {
@@ -24,8 +30,9 @@ public class VetСlinic {
         }
 
         for (Animal a : animals) {
-            v.treatAnimal(a);
+            //veterinarian.treatAnimal(a);
+
+
         }
     }
 }
-
