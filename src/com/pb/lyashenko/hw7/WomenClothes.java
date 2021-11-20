@@ -1,5 +1,5 @@
 package com.pb.lyashenko.hw7;
 
-public interface WomenClothes {
+interface WomenClothes {
     public void dressWomen ();
 }
