@@ -1,20 +1,22 @@
 package com.pb.lyashenko.hw9;
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.List;
+import java.util.Scanner;
 //import java.io.IOException;
 
 public class FileNumbers extends IOException {
     public static void createNumbersFile()  {
-        // создает текстовый файл "numbers.txt"
-        //заполненный случайными целыми числами от 1 до 99. 10 строк и по 10 чисел в каждой строке. Ч
-        // исла разделять пробелами.
-            int count = 0;
-            try(FileWriter fw = new FileWriter("numbers.txt")) {
-                for( int i=0; i<100; i++) {
+
+            try(FileWriter fw = new FileWriter("C://1/numbers.txt")) {
+                for( int i=1; i<101; i++) {
                     fw.write(i+" ");
-                    if (count%10 == 0)
+                    if (i%10 == 0)
                     fw.write("\n");
+                    //i++;
                 }
             }
             catch (IOException ioEx) {
@@ -22,18 +24,42 @@ public class FileNumbers extends IOException {
             }
         }
 
+    public static  void createOddNumbersFile() throws FileNotFoundException {
 
+        try (FileReader reader = new FileReader("C://1/numbers.txt"))
+        {
+            Scanner scan = new Scanner(reader);
+            int i = 1;
 
-    public static  void createOddNumbersFile(){
-        //читает файл "numbers.txt", и создает на основе
-        //него новый файл "odd-numbers.txt" в который входят все числа из "numbers.txt" только все четные заменены на 0.
+            while (scan.hasNextLine()) {
+                String s = scan.nextLine();
+                String[] words = s.split(" ");
+                StringBuilder words2 = new StringBuilder();
+                for(String w: words) {
+                    int i1 = Integer.parseInt(w);
+                    if (i1 % 2 == 0) {
+                        i1 = 0;
+                    }
+                    words2.append(String.valueOf(i1));
+                    words2.append(" ");
+                }
 
-        if (a%2==0){
-            a = 0;
+                    //добавляем строку в новый файл
+                    try(FileWriter fw = new FileWriter("C://1/numbers_odd.txt")) {
+                            fw.write(words2.toString());
+                            fw.write("\n");
+                        }
+                    catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+                i++;
+            } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException {
 
         FileNumbers.createNumbersFile();
 
