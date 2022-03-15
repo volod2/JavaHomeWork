@@ -1,4 +1,11 @@
 out/
 .idea/
+
+/out/
+/.idea/
+
+*.iml
+*.xml
+
 JavaHomeWork.iml
 
